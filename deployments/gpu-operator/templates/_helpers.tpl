@@ -37,19 +37,13 @@ Common labels
 
 {{- define "gpu-operator.labels" -}}
 app.kubernetes.io/name: {{ include "gpu-operator.name" . }}
-helm.sh/chart: {{ include "gpu-operator.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- if .Values.operator.labels }}
 {{ toYaml .Values.operator.labels }}
 {{- end }}
 {{- end -}}
 
 {{- define "gpu-operator.operand-labels" -}}
-helm.sh/chart: {{ include "gpu-operator.chart" . }}
 app.kubernetes.io/managed-by: {{ include "gpu-operator.name" . }}
 {{- if .Values.daemonsets.labels }}
 {{ toYaml .Values.daemonsets.labels }}

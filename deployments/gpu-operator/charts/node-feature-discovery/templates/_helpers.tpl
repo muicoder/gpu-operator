@@ -46,12 +46,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "node-feature-discovery.labels" -}}
-helm.sh/chart: {{ include "node-feature-discovery.chart" . }}
 {{ include "node-feature-discovery.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
